@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: Webserver-Resources
+  name: Webserver_Resources
 spec:
   containers:
-    - name: webserver-resource-demo
+    - name: webserver_resource_demo
       image: nginx:1.25
       resources:
         limits:
