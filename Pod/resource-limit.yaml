@@ -7,3 +7,7 @@ spec:
   containers:
     - name: webserver-resource-demo
       image: nginx:1.25
+      resources:
+        limits:
+          memory: 250Mi
+          cpu: 250m
