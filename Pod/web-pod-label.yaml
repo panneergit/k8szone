@@ -17,7 +17,7 @@ spec:
           protocol: TCP
 
 ---
-apiVersion: v2
+apiVersion: v1
 kind: Pod
 metadata:
   name: web-pod-label2
@@ -35,7 +35,7 @@ spec:
           protocol: TCP
 
 ---
-apiVersion: v3
+apiVersion: v1
 kind: Pod
 metadata:
   name: web-pod-label3
