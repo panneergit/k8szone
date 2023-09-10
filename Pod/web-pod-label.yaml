@@ -1,0 +1,53 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-pod-label1
+  labels:
+    app: webserver-label1
+    env: dev
+    version: v-0.1
+    purpose: Webserver
+spec:
+  containers:
+    - name: ngnix-web-server1
+      image: nginx:1.25
+      ports:
+        containerPort: 80
+        protocol: TCP
+
+---
+apiVersion: v2
+kind: Pod
+metadata:
+  name: web-pod-label2
+  labels:
+    app: webserver-label2
+    env: qa
+    version: v-0.1
+    purpose: Webserver
+spec:
+  containers:
+    - name: ngnix-web-server2
+      image: nginx:1.25
+      ports:
+        containerPort: 80
+        protocol: TCP
+
+---
+apiVersion: v3
+kind: Pod
+metadata:
+  name: web-pod-label3
+  labels:
+    app: webserver-label3
+    env: uat
+    version: v-0.1
+    purpose: Webserver
+spec:
+  containers:
+    - name: ngnix-web-server3
+      image: nginx:1.25
+      ports:
+        containerPort: 80
+        protocol: TCP

@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: alpine-exited-pod
+  labels:
+    app: alpine-exited
+spec:
+  containers:
+    - name: alpine-exited-pod
+      image: alpine:latest
+        
