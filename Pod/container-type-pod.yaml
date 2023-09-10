@@ -22,5 +22,5 @@ spec:
     - name: webnginx-server
       image: nginx:latest
       ports:
-        containerPort: 80
-        protocol: TCP
+        - containerPort: 80
+          protocol: TCP
