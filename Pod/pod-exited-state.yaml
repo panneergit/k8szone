@@ -9,4 +9,4 @@ spec:
   containers:
     - name: alpine-exited-pod
       image: alpine:latest
-        
+  restartPolicy: Never      
