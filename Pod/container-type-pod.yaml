@@ -9,12 +9,12 @@ metadata:
 spec:
   initContainers:
     - name: initcon-1
-      image: alpine:1.25
+      image: alpine
       command:
         - sleep
         - 1m
     - name: initcon-2
-      image: alpine:1.25
+      image: alpine
       command:
         - sleep
         - 1m
