@@ -5,7 +5,7 @@ metadata:
   name: container-type-pod
   labels:
     app: container-type-pod
-    purpose: "Eample of container type pod"
+    purpose: container_type_pod
 spec:
   initContainers:
     - name: initcon-1
