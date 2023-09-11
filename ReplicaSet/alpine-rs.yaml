@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: alpine-container-1
-          image: alpine:1.25
+          image: alpine
           args:
             - sleep
             - 1d
