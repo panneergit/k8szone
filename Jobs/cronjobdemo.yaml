@@ -6,8 +6,7 @@ metadata:
   labels:
     description: cronjobdemo    
 spec:
-  schedule: '*/2 * * * *'
-  
+  schedule: '*/2 * * * *'  
   jobTemplate:
     metadata:
       labels:
@@ -16,8 +15,7 @@ spec:
       selector:
         matchLabels:
           app: cronbatch
-      backOffLimit: 3
-
+      backoffLimit: 3    
       template: 
         metadata:
           name: cronjob-batch-pod
