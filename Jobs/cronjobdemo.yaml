@@ -16,7 +16,7 @@ spec:
       selector:
         matchLabels:
           app: cronbatch
-      backofflimit: 3
+      backOffLimit: 3
 
       template: 
         metadata:
