@@ -12,9 +12,6 @@ spec:
       labels:
         description: jobdemo
     spec:
-      selector:
-        matchLabels:
-          app: cronbatch
       backoffLimit: 3    
       template: 
         metadata:
@@ -22,6 +19,7 @@ spec:
           labels:
             app: cronbatch
         spec:
+          restartPolicy: OnFailure
           containers:
             - name: alpinecontainer1
               image: alpine:latest
