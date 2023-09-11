@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: alpine-rs
+  labels:
+    app: alpine-rpset
+    release: v1
+spec:
+  minReadySeconds: 5
+  replicas: 5
+  selector:
+    matchLabels:
+      app: alpine-pod
+      release: v1.1
+  template:
+    metadata:
+      name: alpine-pod-demo
+      labels:
+        app: alpine-pod
+        release: v1.1
+    spec:
+      containers:
+        - name: alpine-container-1
+          image: alpine:1.25
+          args:
+            - sleep
+            - 1d
