@@ -1,0 +1,27 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: jenkins-rc-demo
+  labels:
+    app: jenkins-rc
+    version: rc.v1
+spec:
+  minReadySeconds: 3
+  replicas: 3
+  selector:
+    app: jenkins-rc-pod
+    version: jrc.v1
+  template:
+    metadata:
+      name: jenkins-pod
+      labels: 
+        app: jenkins-rc-pod
+        version: jrc.v1
+    spec:
+      containers:
+        - name: jenkins-container
+          image: jenkins/jenkins:latest
+          ports:
+            - containerPort: 8080
+              protocol: TCP
