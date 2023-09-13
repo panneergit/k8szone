@@ -25,4 +25,4 @@ spec:
               image: alpine:latest
               command:
                 - sleep
-                - 2m  
+                - 10s

@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nginx-rs-demo
+  labels:
+    purpose: NginxReplicaSet
+spec:
+  minReadySeconds: 3s
+  replicas: 5
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values: 
+          - nginx-rs-pod
+          - jenkins
+      - key: release
+        operator: Exists
+  template:
+    metadata: 
+      name: nginx-rs-pod
+      labels: 
+        app: nginx-rs-pod
+        release: v1
+    spec:
+      containers:
+        - name: nginxc
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+              protocol: TCP
+              
