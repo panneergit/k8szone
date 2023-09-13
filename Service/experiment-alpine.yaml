@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: experiment-pod
+  labels:
+    purpose: experiment-clusterIP-checking
+spec:
+  containers:
+    - name: alpinec
+      image: alpine:latest
+      command:
+        - sleep
+        - 1d
