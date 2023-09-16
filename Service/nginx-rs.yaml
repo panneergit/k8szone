@@ -6,7 +6,7 @@ metadata:
   labels:
     purpose: NginxReplicaSet
 spec:
-  minReadySeconds: 3s
+  minReadySeconds: 3
   replicas: 5
   selector:
     matchExpressions:
