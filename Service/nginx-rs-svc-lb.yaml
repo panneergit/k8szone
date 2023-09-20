@@ -8,6 +8,6 @@ spec:
   selector:
     app: nginx-rs-pod
   ports:
-    - name: websvcport
+    - name: nginx-pod
       port: 80
-      targetPort: webport
+      targetPort: 80
