@@ -12,5 +12,5 @@ spec:
     - name: svc-port
       port: 80
       targetPort: webport
-      nodePort: 30001
+      nodePort: 30002
  

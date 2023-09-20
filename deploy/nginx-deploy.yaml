@@ -28,8 +28,8 @@ spec:
         app: nginxweb-pod
     spec:
       containers:
-        - name: nginxweb
-          image: nginx:latest
+        - name: nginxcustweb
+          image: panneercts/nginx-custom:v1.0
           env:
             - name: message
               value: Welcome
