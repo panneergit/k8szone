@@ -19,11 +19,11 @@ spec:
           port: nginx-web-port
         failureThreshold: 3
         periodSeconds: 5
-        successThreshold: 2
+        successThreshold: 1
       readinessProbe:
         httpGet:
           path: /
           port: nginx-web-port
         failureThreshold: 3
         periodSeconds: 5
-        successThreshold: 2
+        successThreshold: 1
