@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-healthcheck-pod
+  lables:
+    app: nginx-healthcheck
+spec:
+  containers:
+    - name: nginx-health-container
+      image: nginx:latest
+      ports:
+        - name: nginx-web-port
+          containerPort: 80
+          protocol: TCP
+      livenessProbe:
+        httpGet:
+          path: /
+          port: nginx-web-port
+        failureThreshold: 3
+        periodSeconds: 5
+        successThreshold: 2
+      readinessProbe:
+        httpGet:
+          path: /
+          port: nginx-web-port
+        failureThreshold: 3
+        periodSeconds: 5
+        successThreshold: 2
