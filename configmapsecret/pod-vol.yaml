@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: user-config-pod
+  name: user-pod-vol
 spec:
   containers:
     - name: alpinecontainer2
