@@ -24,6 +24,6 @@ spec:
         httpGet:
           path: /
           port: nginx-web-port
-        failureThreshold: 2
+        failureThreshold: 3
         periodSeconds: 3
         successThreshold: 1
