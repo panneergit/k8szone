@@ -6,7 +6,7 @@ metadata:
 spec:
   containers:
     - name: alpinecont
-      image: alpine:latest
+      image: alpine
       command:
         - slepp
         - 1d
