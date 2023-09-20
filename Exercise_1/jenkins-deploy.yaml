@@ -1,0 +1,24 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkjns-dp
+spec:
+  minReadySeconds: 5
+  replicas: 3
+  selector:
+    matchLabels:
+      app: jenkins-web
+  template:
+    metadata:
+      name: jenkins-web-pod
+      labels:
+        app: jenkins-web
+    spec:
+      containers:
+        - name: jenkinscnt
+          image: jenkins/jenkins:latest
+          ports: 
+            - name: webport
+              containerPort: 80
+              protocol: TCP
