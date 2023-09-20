@@ -20,5 +20,5 @@ spec:
           image: jenkins/jenkins:latest
           ports: 
             - name: webport
-              containerPort: 80
+              containerPort: 8080
               protocol: TCP

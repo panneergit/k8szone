@@ -9,7 +9,7 @@ spec:
     app: jenkins-web
   ports:
     - name: jenkinssvc-port
-      port: 80
+      port: 8080
       targetPort: webport
       nodePort: 30001
       protocol: TCP
