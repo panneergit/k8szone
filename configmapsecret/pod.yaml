@@ -1,14 +1,14 @@
 ---
 apiVersion: v1
 kind: Pod
-metadata: 
+metadata:
   name: user-config-pod
 spec:
   containers:
-    - name: alpinecont
-      image: alpine
+    - name: alpinecontainer1
+      image: alpine:latest
       command:
-        - slepp
+        - sleep
         - 1d
       envFrom:
         - configMapRef:
