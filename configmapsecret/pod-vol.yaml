@@ -1,0 +1,24 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: user-config-pod
+spec:
+  containers:
+    - name: alpinecontainer2
+      image: alpine:latest
+      command:
+        - sleep
+        - 1d
+      volumeMounts:
+        - name: userconfig
+          mountPath: /creds/userconfig
+        - name: usersecret
+          mountPath: /creds/usersecret
+  volumes:
+    - name: userconfig
+      configMap:
+        name: userconfig-cm
+    - name: usersecret
+      secret:
+        secretName: userconfig-st
