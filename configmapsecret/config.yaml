@@ -5,4 +5,4 @@ metadata:
   name: userconfig-cm
 data:
   username: qtdevops
-  host-url: http://localhost:8080
+  hosturl: http://localhost:8080
