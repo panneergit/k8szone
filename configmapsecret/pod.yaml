@@ -1,0 +1,17 @@
+---
+apiVersion: 
+kind:
+metadata: 
+  name: user-config-pod
+spec:
+  containers:
+    - name: alpinecont
+      image: alpine:latest
+      command:
+        - slepp
+        - 1d
+      envFrom:
+        - configMapRef:
+            name: userconfig-cm
+        - secretRef:
+            name: userconfig-st
