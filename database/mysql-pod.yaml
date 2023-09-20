@@ -1,0 +1,14 @@
+---
+apiVersion:
+kind:
+metadata:
+  name: nopmysql-pod
+  labels:
+    app: nop-mysql
+spec:
+  containers:
+    - name: nopmysqlc
+      image: mysql:8
+      envFrom:
+        - secretRef:
+            name: mysqldb-secret
