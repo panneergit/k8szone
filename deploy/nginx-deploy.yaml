@@ -10,6 +10,8 @@ kind: Deployment
 metadata:
   name: nginx-deploy
   namespace: prod
+  annotations:
+    kubernetes.io/change-cause: "Image updated to v2.0"
 spec:
   minReadySeconds: 5
   replicas: 5
@@ -29,7 +31,7 @@ spec:
     spec:
       containers:
         - name: nginxcustweb
-          image: panneercts/nginx-custom:v1.0
+          image: panneercts/nginx-custom:v2.0
           env:
             - name: message
               value: Welcome
