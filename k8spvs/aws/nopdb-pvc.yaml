@@ -2,11 +2,11 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: aws-manage-pvc
+  name: nopdb-pvc
 spec:
-  accessModes:
+  accessModes: 
     - ReadWriteOnce
-  storageClassName: ebs-sc
+  storageClassName: nopdb-ebs-sc
   resources:
     requests:
-      storage: 2Gi
+      storage: 5Gi

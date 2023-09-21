@@ -2,18 +2,18 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: mysql-pvc-pod
+  name: nopdb-mysql-pod
 spec:
   containers:
-    - name: mysqlc-pvc
+    - name: mysqlc
       image: mysql:8
       envFrom:
         - secretRef:
-            name: mysqldb-secret
+            name: nopdb-secret
       volumeMounts:
-        - name: mysql-vol
+        - name: nopdb-vol
           mountPath: /var/lib/mysql
   volumes:
-    - name: mysql-vol
+    - name: nopdb-vol
       persistentVolumeClaim:
-        claimName: aws-manage-pvc
+        claimName: nopdb-pvc
