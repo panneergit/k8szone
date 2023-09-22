@@ -15,5 +15,4 @@ spec:
           mountPath: /var/lib/mysql
   volumes:
     - name: nopdb-vol
-      persistentVolumeClaim:
-        claimName: nopdb-gp2-pvc
+      emptyDir: {}

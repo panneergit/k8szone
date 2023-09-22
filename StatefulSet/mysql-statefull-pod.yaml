@@ -1,0 +1,52 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-stateful-svc
+  labels:
+    app: mysql-stateful-svc
+spec:
+  clusterIP: None
+  selector:
+    app: mysql-stateful-svc
+  ports:
+    - port: 3306
+      targetPort: 3306
+      protocol: TCP
+
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql-stateful-set
+spec:
+  minReadySeconds: 2
+  replicas: 3
+  serviceName: mysql-stateful-svc
+  selector:
+    matchLabels:
+      app: mysql-stateful-set
+  template:
+    metadata:
+      name: mysql-stateful-pod
+      labels:
+        app: mysql-stateful-set
+    spec:
+      containers:
+        - name: mysqlc
+          image: mysql:8
+          envFrom:
+            - secretRef:
+                name: nopdb-secret
+          volumeMounts:
+            - name: mysqlc-vol
+              mountPath: /var/lib/mysql
+  volumeClaimTemplates:
+    - metadata:
+        name: mysqlc-vol
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: gp2
+        resources:
+          requests:
+            storage: 1Gi
