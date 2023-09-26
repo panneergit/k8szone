@@ -1,0 +1,30 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginxdb-deploy
+spec:
+  minReadySeconds: 5
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginxdb-pod
+  template:
+    metadata:
+      name: nginxdb-pod
+      labels:
+        app: nginxdb-pod
+    spec:
+      containers:
+        - name: nginxdbc
+          image: nginx:latest
+          ports:
+            - name: dbport
+              containerPort: 80
+              protocol: TCP
+          volumeMounts:
+            - name: nginxdb-vol
+              mountPath: /var/appdata
+      volumes:
+        - name: nginxdb-vol
+          emptyDir: {}
