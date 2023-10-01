@@ -9,3 +9,6 @@ nodeGroups:
   - name: ng-1
     instanceType: t2.large
     desiredCapacity: 1
+
+
+### eksctl utils associate-iam-oidc-provider --cluster=qteks-cluster --region us-east-2 --approve

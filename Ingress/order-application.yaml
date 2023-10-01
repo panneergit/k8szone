@@ -1,0 +1,41 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: order-application
+  ports:
+    - name: ordersvcport
+      port: 80
+      targetPort: orderwebport
+      protocol: TCP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-deploy
+spec:
+  minReadySeconds: 5
+  replicas: 3
+  selector:
+    matchLabels:
+      app: order-application
+      version: v1.0
+  template:
+    metadata:
+      name: order-application-pod
+      labels:
+        app: order-application
+        version: v1.0
+    spec:
+      containers:
+        - name: orderc
+          image: panneercts/dm-order-service:v1.0
+          ports:
+            - name: orderwebport
+              containerPort: 80
+              protocol: TCP

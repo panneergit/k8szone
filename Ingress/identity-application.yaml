@@ -1,0 +1,41 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: identity-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: identity-application
+  ports:
+    - name: identitysvcport
+      port: 80
+      targetPort: identitywebport
+      protocol: TCP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: identity-deploy
+spec:
+  minReadySeconds: 5
+  replicas: 3
+  selector:
+    matchLabels:
+      app: identity-application
+      version: v1.0
+  template:
+    metadata:
+      name: identity-application-pod
+      labels:
+        app: identity-application
+        version: v1.0
+    spec:
+      containers:
+        - name: identityc
+          image: panneercts/dm-identity-service:v1.0
+          ports:
+            - name: identitywebport
+              containerPort: 80
+              protocol: TCP

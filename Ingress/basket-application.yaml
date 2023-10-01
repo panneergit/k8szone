@@ -1,0 +1,41 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: basket-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: basket-application
+  ports:
+    - name: basketsvcport
+      port: 80
+      targetPort: basketwebport
+      protocol: TCP
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basket-deploy
+spec:
+  minReadySeconds: 5
+  replicas: 3
+  selector:
+    matchLabels:
+      app: basket-application
+      version: v1.0
+  template:
+    metadata:
+      name: basket-application-pod
+      labels:
+        app: basket-application
+        version: v1.0
+    spec:
+      containers:
+        - name: basketc
+          image: panneercts/dm-basket-service:v1.0
+          ports:
+            - name: basketwebport
+              containerPort: 80
+              protocol: TCP

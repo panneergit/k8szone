@@ -7,12 +7,32 @@ spec:
   containers:
     - name: mysqlc
       image: mysql:8
+      ports:
+        - name: mysqldbport
+          containerPort: 3306
+          protocol: TCP
       envFrom:
         - secretRef:
             name: nopdb-secret
       volumeMounts:
         - name: nopdb-vol
           mountPath: /var/lib/mysql
+      livenessProbe:
+        httpGet:
+          path: /
+          port: mysqldbport
+        failureThreshold: 3
+        periodSeconds: 3
+        successThreshold: 1
+        initialDelaySeconds: 120
+      readinessProbe:
+        httpGet:
+          path: /
+          port: mysqldbport
+        failureThreshold: 3
+        periodSeconds: 3
+        successThreshold: 1
+        initialDelaySeconds: 120
   volumes:
     - name: nopdb-vol
       persistentVolumeClaim:

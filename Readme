@@ -1,0 +1,22 @@
+#For helm package installation
+
+# Helm installation
+choco install kubernetes-helm
+
+# Helm Updates
+helm repo add nginx-stable https://helm.nginx.com/stable
+helm repo update
+helm upgrade --install ingress-nginx ingress-nginx --repo https://kubernetes.github.io/ingress-nginx --namespace ingress-nginx --create-namespace
+
+helm --help
+
+# Create project
+helm create mychart
+
+# 
+helm template --help
+
+helm template [NAME] [CHART] [OPTION] 
+
+# Example:
+helm template attempat1 . --output-dir attempat1
